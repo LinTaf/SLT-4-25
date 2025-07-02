@@ -31,92 +31,6 @@ public class Board {
         return moveCounter;
     }
 
-    public boolean draw() {
-        if (moveCounter == 9) {
-            System.out.println("Draw!");
-            printBoard();
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    public boolean winByRow(int player)
-    {
-        for (int i=0; i < 3; i++) {
-            if (board[i][0] == board[i][1] &&
-                    board[i][1] == board[i][2] &&
-                    board[i][0] != ' ') {
-                if (player == 1) {
-                    System.out.println("X player wins!");
-                    printBoard();
-                    return true;
-                }
-                else {
-                    System.out.println("Player O  wins!");
-                    printBoard();
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean winByColumn(int player)
-    {
-        for (int i = 0; i < 3; i++) {
-            if (board[0][i] == board[1][i] &&
-                    board[1][i] == board[2][i] &&
-                    board[0][i] != ' ') {
-                if (player == 1) {
-                    System.out.println("X player wins!");
-                    printBoard();
-                    return true;
-                }
-                else {
-                    System.out.println("Player O  wins!");
-                    printBoard();
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean winByDiagonal(int player) {
-        if (board[0][0] == board[1][1] &&
-                board[1][1] == board[2][2] &&
-                board[0][0] != ' ') {
-            if (player == 1) {
-                System.out.println("X player wins!");
-                printBoard();
-                return true;
-            }
-            else {
-                System.out.println("Player O  wins!");
-                printBoard();
-                return true;
-            }
-        }
-
-        if (board[0][2] == board[1][1] &&
-                board[1][1] == board[2][0] &&
-                board[0][2] != ' ') {
-            if (player == 1) {
-                System.out.println("Player X wins!");
-                printBoard();
-                return true;
-            }
-            else {
-                System.out.println("Player O  wins!");
-                printBoard();
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     public void setBoard(int r, int c, int p) {
         if (p == 1) {
             board[r][c] = 'X';
@@ -126,22 +40,6 @@ public class Board {
         }
     }
 
-    boolean legalMove (int r, int c) {
-        if (r > 2 && c > 2) {
-            System.out.println("Invalid Row & Column Input - Choose 0,1, or 2");
-            return false;
-        } else if (r > 2 ) {
-            System.out.println("Invalid Row Input - Choose 0,1, or 2");
-            return false;
-        } else if (c > 2) {
-            System.out.println("Invalid Column Input - Choose 0,1, or 2");
-            return false;
-        }
-        if (board[r][c] != ' ') {
-            System.out.println("Illegal Move");
-            return false;
-        } else {
-            return true;
-        }
-    }
+
+
 }
