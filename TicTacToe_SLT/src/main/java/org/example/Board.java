@@ -40,6 +40,25 @@ public class Board {
         }
     }
 
+    boolean legalMove (int r, int c) {
+        if (r > 2 && c > 2) {
+            System.out.println("Invalid Row & Column Input - Choose 0,1, or 2");
+            return false;
+        } else if (r > 2 ) {
+            System.out.println("Invalid Row Input - Choose 0,1, or 2");
+            return false;
+        } else if (c > 2) {
+            System.out.println("Invalid Column Input - Choose 0,1, or 2");
+            return false;
+        }
+        if (board[r][c] != ' ') {
+            System.out.println("Illegal Move");
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
 
 }
