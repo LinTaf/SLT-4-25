@@ -33,7 +33,7 @@ public class Board {
 
     public boolean draw() {
         if (moveCounter == 9) {
-            System.out.println("Cats Game!");
+            System.out.println("Draw!");
             printBoard();
             return true;
         }
@@ -53,7 +53,7 @@ public class Board {
                     return true;
                 }
                 else {
-                    System.out.println("O player wins!");
+                    System.out.println("Player O  wins!");
                     printBoard();
                     return true;
                 }
@@ -74,7 +74,7 @@ public class Board {
                     return true;
                 }
                 else {
-                    System.out.println("Draw!");
+                    System.out.println("Player O  wins!");
                     printBoard();
                     return true;
                 }
@@ -93,21 +93,22 @@ public class Board {
                 return true;
             }
             else {
-                System.out.println("Draw!");
+                System.out.println("Player O  wins!");
                 printBoard();
                 return true;
             }
         }
+
         if (board[0][2] == board[1][1] &&
                 board[1][1] == board[2][0] &&
                 board[0][2] != ' ') {
             if (player == 1) {
-                System.out.println("X player wins!");
+                System.out.println("Player X wins!");
                 printBoard();
                 return true;
             }
             else {
-                System.out.println("Draw!");
+                System.out.println("Player O  wins!");
                 printBoard();
                 return true;
             }
