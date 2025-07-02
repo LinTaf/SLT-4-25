@@ -59,6 +59,18 @@ public class Board {
         }
     }
 
+    public boolean draw() {
+        if (moveCounter == 9) {
+            System.out.println("Cats Game!");
+            printBoard();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
 
 
 }
