@@ -15,7 +15,8 @@ public class Board {
         }
     }
 
-    public void printBoard() {
+    public void printBoardCurrentGameStatus() {
+
         for (int row = 0; row < ROW; row++) {
             System.out.println(board[row][0] + "|" + board[row][1] + "|" + board[row][2]);
             if (row < 2 )
@@ -62,7 +63,7 @@ public class Board {
     public boolean draw() {
         if (moveCounter == 9) {
             System.out.println("Cats Game!");
-            printBoard();
+            printBoardCurrentGameStatus();
             return true;
         }
         else {
