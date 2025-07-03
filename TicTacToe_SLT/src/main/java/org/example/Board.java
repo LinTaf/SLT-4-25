@@ -15,6 +15,10 @@ public class Board {
         }
     }
 
+    public char[][] getBoard() {
+        return board;
+    }
+
     public void moveIncrement() {
         moveCounter += 1;
     }
