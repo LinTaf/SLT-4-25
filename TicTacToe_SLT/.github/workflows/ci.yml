@@ -2,7 +2,7 @@ name: ci.yml
 on:
   push:
     branches:
-      - "feature/*"
+      - "feature/**"
 
 jobs:
   build-and-test:
