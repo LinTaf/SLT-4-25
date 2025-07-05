@@ -1,23 +1,10 @@
 package org.example;
-
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.params.ParameterizedTest;
-//import org.junit.jupiter.params.provider.ValueSource;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-
-import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.params.ParameterizedTest;
-//import org.junit.jupiter.params.provider.ValueSource;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
@@ -227,6 +214,5 @@ class BoardTest {
         assertFalse(game2.draw());
     }
     // ************* Winner checks tests END *************
-
 
 }
