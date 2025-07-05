@@ -1,8 +1,19 @@
 package org.example;
 
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 //import org.junit.jupiter.params.ParameterizedTest;
 //import org.junit.jupiter.params.provider.ValueSource;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+
+import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.params.ParameterizedTest;
+//import org.junit.jupiter.params.provider.ValueSource;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -47,4 +58,48 @@ class BoardTest {
         Board board = new Board();
         assertFalse(board.legalMove(3, 3));
     }
+
+
+    // *********** Test for printing board pattern START ***********
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+
+    private Board game;
+
+    @BeforeEach
+    void setUp() {
+        System.setOut(new PrintStream(outContent));
+        game = new Board();
+
+        game.board = new char[][] {
+                {'X', 'O', 'X'},
+                {'O', 'X', 'O'},
+                {'X', ' ', 'O'}
+        };
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.setOut(originalOut);
+    }
+
+    @Test
+    void test_if_PrintBoard_prints_correct_pattern() {
+        game.printBoard();
+
+        String expectedOutput = String.join(System.lineSeparator(),
+                "X|O|X",
+                "-----",
+                "O|X|O",
+                "-----",
+                "X| |O"
+        ) + System.lineSeparator();
+        // final newline from last println in loop
+
+        assertEquals(expectedOutput, outContent.toString());
+    }
+
+    // *********** Test for printing board pattern END ***********
+
 }
