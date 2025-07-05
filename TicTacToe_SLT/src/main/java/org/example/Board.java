@@ -5,6 +5,7 @@ public class Board {
     final int COL = 3;	//number of cols
     char [][] board = new char[ROW][COL];
     private int moveCounter = 0;
+    boolean isOver = false;
 
     public Board () {
         //initialize board with empty rows/cols
@@ -116,5 +117,62 @@ public class Board {
         }
         return false;
     }
+    public boolean winByDiagonal(int player){
+        if (board[0][0] == board[1][1] &&
+                board[1][1] == board[2][2] &&
+                board[0][0] != ' ') {
+            if (player == 1) {
+                System.out.println("Player X  wins!");
+                printBoard();
+                return true;
+            }
+            else {
+                System.out.println("Player O wins!");
+                printBoard();
+                return true;
+            }
+        }
+        if (board[0][2] == board[1][1] &&
+                board[1][1] == board[2][0] &&
+                board[0][2] != ' ') {
+            if (player == 1) {
+                System.out.println("X player wins!");
+                printBoard();
+                return true;
+
+            }
+            else {
+                System.out.println("O player wins!");
+                printBoard();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void checkForWinner(int player){
+        if (getMoveCounter() >= 4) {
+            if (winByColumn(player)) {
+                isOver = true;
+
+
+            } else if (winByDiagonal(player)) {
+                isOver = true;
+
+
+            } else if (winByRow(player)) {
+                isOver = true;
+
+
+            } else if (draw()) {
+                isOver = true;
+
+
+
+            }
+        }
+
+    }
+    // ***** WINNER CHECKS END *****
 
 }
