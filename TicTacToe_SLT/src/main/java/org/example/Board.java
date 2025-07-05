@@ -5,6 +5,8 @@ public class Board {
     final int COL = 3;	//number of cols
     char [][] board = new char[ROW][COL];
     private int moveCounter = 0;
+    boolean isOver = false;
+
 
     public Board () {
         //initialize board with empty rows/cols
@@ -18,6 +20,16 @@ public class Board {
     public char[][] getBoard() {
         return board;
     }
+
+
+    public void setBoard(char[][] board) {
+        this.board = board;
+    }
+
+    public void setMoveCounter(int moveCounter) {
+        this.moveCounter = moveCounter;
+    }
+
 
     public void moveIncrement() {
         moveCounter += 1;
@@ -63,6 +75,117 @@ public class Board {
                 System.out.println("-----");
         }
     }
+
+
+    // ************* WINNER CHECKS START *************
+    public boolean draw() {
+        if (moveCounter == 9) {
+            System.out.println("Draw!");
+            printBoard();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    public boolean winByRow(int player){
+        for (int i=0; i < 3; i++) {
+            if (board[i][0] == board[i][1] &&
+                    board[i][1] == board[i][2] &&
+                    board[i][0] != ' ') {
+                if (player == 1) {
+                    System.out.println("Player X  wins!");
+                    printBoard();
+                    return true;
+                }
+                else {
+                    System.out.println("Player O wins!");
+                    printBoard();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean winByColumn(int player){
+        for (int i = 0; i < 3; i++) {
+            if (board[0][i] == board[1][i] &&
+                    board[1][i] == board[2][i] &&
+                    board[0][i] != ' ') {
+                if (player == 1) {
+                    System.out.println("Player X  wins!");
+                    printBoard();
+                    return true;
+                }
+                else {
+                    System.out.println("Player O wins!");
+                    printBoard();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public boolean winByDiagonal(int player){
+        if (board[0][0] == board[1][1] &&
+                board[1][1] == board[2][2] &&
+                board[0][0] != ' ') {
+            if (player == 1) {
+                System.out.println("Player X  wins!");
+                printBoard();
+                return true;
+            }
+            else {
+                System.out.println("Player O wins!");
+                printBoard();
+                return true;
+            }
+        }
+        if (board[0][2] == board[1][1] &&
+                board[1][1] == board[2][0] &&
+                board[0][2] != ' ') {
+            if (player == 1) {
+                System.out.println("X player wins!");
+                printBoard();
+                return true;
+
+            }
+            else {
+                System.out.println("O player wins!");
+                printBoard();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void checkForWinner(int player){
+        if (getMoveCounter() >= 4) {
+            if (winByColumn(player)) {
+                isOver = true;
+
+
+            } else if (winByDiagonal(player)) {
+                isOver = true;
+
+
+            } else if (winByRow(player)) {
+                isOver = true;
+
+
+            } else if (draw()) {
+                isOver = true;
+
+
+
+            }
+        }
+
+    }
+    // ************* WINNER CHECKS END *************
 
 
 }

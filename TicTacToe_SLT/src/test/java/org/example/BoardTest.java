@@ -67,6 +67,9 @@ class BoardTest {
 
     private Board game;
 
+
+    // * BeforeEach sets up "game" Board for all methods, but "game" is solely used for board pattern tests *
+
     @BeforeEach
     void setUp() {
         System.setOut(new PrintStream(outContent));
@@ -101,5 +104,129 @@ class BoardTest {
     }
 
     // *********** Test for printing board pattern END ***********
+
+
+    // ************* Winner checks tests START *************
+    //player X = 1
+    //player O = 2
+    @Test
+    public void testWinByRow_PlayerX_true() {
+        Board game2 = new Board();
+        game2.setBoard(new char[][] {
+                {'X', 'X', 'X'},
+                {' ', 'O', ' '},
+                {'O', ' ', ' '}
+        });
+        assertTrue(game2.winByRow(1));
+        assertFalse(game2.winByColumn(1));
+        assertFalse(game2.draw());
+
+    }
+
+    @Test
+    public void testWinByRow_PlayerO_true() {
+        Board game2 = new Board();
+        game2.setBoard(new char[][] {
+                {' ', ' ', ' '},
+                {'O', 'O', 'O'},
+                {'X', ' ', 'X'}
+        });
+        assertTrue(game2.winByRow(2));
+        assertFalse(game2.winByColumn(2));
+        assertFalse(game2.winByDiagonal(2));
+        assertFalse(game2.draw());
+
+    }
+
+    @Test
+    public void testWinByColumn_PlayerX_true() {
+        Board game2 = new Board();
+        game2.setBoard(new char[][] {
+                {'X', 'O', ' '},
+                {'X', 'O', ' '},
+                {'X', ' ', ' '}
+        });
+        assertTrue(game2.winByColumn(1));
+        assertFalse(game2.winByRow(1));
+        assertFalse(game2.winByDiagonal(1));
+        assertFalse(game2.draw());
+    }
+
+    @Test
+    public void testWinByColumn_PlayerO_true() {
+        Board game2 = new Board();
+        game2.setBoard(new char[][] {
+                {'O', 'X', 'X'},
+                {'O', ' ', 'X'},
+                {'O', ' ', ' '}
+        } );
+        assertTrue(game2.winByColumn(2));
+        assertFalse(game2.winByRow(2));
+        assertFalse(game2.winByDiagonal(2));
+        assertFalse(game2.draw());
+    }
+
+    @Test
+    public void testWinByDiagonal_PlayerX_MainDiag() {
+        Board game2 = new Board();
+        game2.setBoard(new char[][] {
+                {'X', 'O', ' '},
+                {' ', 'X', 'O'},
+                {' ', ' ', 'X'}
+        });
+        assertTrue(game2.winByDiagonal(1));
+        assertFalse(game2.winByColumn(1));
+        assertFalse(game2.winByRow(1));
+        assertFalse(game2.draw());
+    }
+
+    @Test
+    public void testWinByDiagonal_PlayerO_AntiDiag() {
+        Board game2 = new Board();
+        game2.setBoard(new char[][] {
+                {'X', ' ', 'O'},
+                {'X', 'O', ' '},
+                {'O', ' ', 'X'}
+        });
+        assertTrue(game2.winByDiagonal(2));
+        assertFalse(game2.winByColumn(2));
+        assertFalse(game2.winByRow(2));
+        assertFalse(game2.draw());
+    }
+
+    @Test
+    public void testDraw() {
+        Board game2 = new Board();
+        game2.setBoard(new char[][] {
+                {'X', 'O', 'X'},
+                {'X', 'O', 'O'},
+                {'O', 'X', 'X'}
+        });
+        game2.setMoveCounter(9);
+
+        assertTrue(game2.draw());
+        assertFalse(game2.winByDiagonal(1));
+        assertFalse(game2.winByColumn(1));
+        assertFalse(game2.winByRow(1));
+
+        assertFalse(game2.winByDiagonal(2));
+        assertFalse(game2.winByColumn(2));
+        assertFalse(game2.winByRow(2));
+    }
+
+    @Test
+    public void testDraw_false_board_not_full() {
+        Board game2 = new Board();
+        game2.setBoard(new char[][] {
+                {'X', 'O', ' '},
+                {'X', 'O', 'O'},
+                {'O', 'X', 'X'}
+        });
+        game2.setMoveCounter(8);
+
+        assertFalse(game2.draw());
+    }
+    // ************* Winner checks tests END *************
+
 
 }
