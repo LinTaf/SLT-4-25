@@ -67,7 +67,9 @@ class BoardTest {
 
     private Board game;
 
+
     // * BeforeEach sets up "game" Board for all methods, but "game" is solely used for board pattern tests *
+
     @BeforeEach
     void setUp() {
         System.setOut(new PrintStream(outContent));
@@ -102,6 +104,7 @@ class BoardTest {
     }
 
     // *********** Test for printing board pattern END ***********
+
 
     // ************* Winner checks tests START *************
     //player X = 1
@@ -224,5 +227,6 @@ class BoardTest {
         assertFalse(game2.draw());
     }
     // ************* Winner checks tests END *************
+
 
 }

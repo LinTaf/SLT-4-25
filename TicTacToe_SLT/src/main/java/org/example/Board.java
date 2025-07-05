@@ -7,6 +7,7 @@ public class Board {
     private int moveCounter = 0;
     boolean isOver = false;
 
+
     public Board () {
         //initialize board with empty rows/cols
         for (int row = 0; row < ROW; row++) {
@@ -20,6 +21,7 @@ public class Board {
         return board;
     }
 
+
     public void setBoard(char[][] board) {
         this.board = board;
     }
@@ -27,6 +29,7 @@ public class Board {
     public void setMoveCounter(int moveCounter) {
         this.moveCounter = moveCounter;
     }
+
 
     public void moveIncrement() {
         moveCounter += 1;
@@ -72,6 +75,7 @@ public class Board {
                 System.out.println("-----");
         }
     }
+
 
     // ************* WINNER CHECKS START *************
     public boolean draw() {
@@ -182,5 +186,6 @@ public class Board {
 
     }
     // ************* WINNER CHECKS END *************
+
 
 }
