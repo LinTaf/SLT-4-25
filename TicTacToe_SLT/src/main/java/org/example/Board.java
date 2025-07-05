@@ -24,6 +24,10 @@ public class Board {
         this.board = board;
     }
 
+    public void setMoveCounter(int moveCounter) {
+        this.moveCounter = moveCounter;
+    }
+
     public void moveIncrement() {
         moveCounter += 1;
     }
