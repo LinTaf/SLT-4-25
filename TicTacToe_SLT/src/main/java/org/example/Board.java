@@ -168,24 +168,21 @@ public class Board {
         if (getMoveCounter() >= 4) {
             if (winByColumn(player)) {
                 isOver = true;
-
+                playGame();
 
             } else if (winByDiagonal(player)) {
                 isOver = true;
-
+                playGame();
 
             } else if (winByRow(player)) {
                 isOver = true;
-
+                playGame();
 
             } else if (draw()) {
                 isOver = true;
-
-
-
+                playGame();
             }
         }
-
     }
     // ************* WINNER CHECKS END *************
 
