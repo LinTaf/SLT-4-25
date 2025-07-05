@@ -55,6 +55,7 @@ public class Board {
         }
     }
 
+
     public void printBoard() {
         for (int row = 0; row < ROW; row++) {
             System.out.println(board[row][0] + "|" + board[row][1] + "|" + board[row][2]);
@@ -62,5 +63,6 @@ public class Board {
                 System.out.println("-----");
         }
     }
+
 
 }

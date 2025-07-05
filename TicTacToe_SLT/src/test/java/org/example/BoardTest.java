@@ -1,5 +1,6 @@
 package org.example;
 
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,6 +8,11 @@ import org.junit.jupiter.api.Test;
 //import org.junit.jupiter.params.provider.ValueSource;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+
+
+import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.params.ParameterizedTest;
+//import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -53,6 +59,7 @@ class BoardTest {
         assertFalse(board.legalMove(3, 3));
     }
 
+
     // *********** Test for printing board pattern START ***********
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -94,4 +101,5 @@ class BoardTest {
     }
 
     // *********** Test for printing board pattern END ***********
+
 }
