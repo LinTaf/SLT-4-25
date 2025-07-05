@@ -20,6 +20,10 @@ public class Board {
         return board;
     }
 
+    public void setBoard(char[][] board) {
+        this.board = board;
+    }
+
     public void moveIncrement() {
         moveCounter += 1;
     }
@@ -173,6 +177,6 @@ public class Board {
         }
 
     }
-    // ***** WINNER CHECKS END *****
+    // ************* WINNER CHECKS END *************
 
 }
