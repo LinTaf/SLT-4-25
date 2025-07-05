@@ -64,5 +64,57 @@ public class Board {
         }
     }
 
+    // ************* WINNER CHECKS START *************
+    public boolean draw() {
+        if (moveCounter == 9) {
+            System.out.println("Draw!");
+            printBoard();
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
+    public boolean winByRow(int player){
+        for (int i=0; i < 3; i++) {
+            if (board[i][0] == board[i][1] &&
+                    board[i][1] == board[i][2] &&
+                    board[i][0] != ' ') {
+                if (player == 1) {
+                    System.out.println("Player X  wins!");
+                    printBoard();
+                    return true;
+                }
+                else {
+                    System.out.println("Player O wins!");
+                    printBoard();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean winByColumn(int player){
+        for (int i = 0; i < 3; i++) {
+            if (board[0][i] == board[1][i] &&
+                    board[1][i] == board[2][i] &&
+                    board[0][i] != ' ') {
+                if (player == 1) {
+                    System.out.println("Player X  wins!");
+                    printBoard();
+                    return true;
+                }
+                else {
+                    System.out.println("Player O wins!");
+                    printBoard();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 }
