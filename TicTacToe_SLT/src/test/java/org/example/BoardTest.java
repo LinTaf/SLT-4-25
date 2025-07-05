@@ -215,6 +215,4 @@ class BoardTest {
     }
     // ************* Winner checks tests END *************
 
-
-
 }
