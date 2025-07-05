@@ -247,6 +247,6 @@ public class Board {
             System.out.println("Goodbye!");
             System.exit(0);
         }
-
+        sc.close();
     }
 }
