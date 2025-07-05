@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Board {
     final int ROW = 3;	//number of rows
     final int COL = 3;	//number of cols
@@ -187,5 +189,67 @@ public class Board {
     }
     // ************* WINNER CHECKS END *************
 
+    // ************* PLAY TIC-TAC-TOE *************
+    public void playGame(){
+        Scanner sc = new Scanner (System.in);
+        int p1r,p1c,p2r,p2c;
+        char playOrNot;
 
+        System.out.println("Press Y to play, or N to exit");
+        playOrNot = sc.next().charAt(0);
+
+        if (playOrNot == 'Y') {
+
+            System.out.println("Welcome to Tic-Tac-Toe");
+            System.out.println("======================");
+
+            //do loop while game is running
+            do {
+                //do until user chooses valid input
+                //invalid input message is shown AFTER both row & col have been entered
+                do {
+                    printBoard();
+                    System.out.println("Player 1's turn: 'X'");
+                    System.out.println("Which Row would you like?");
+                    p1r = sc.nextInt();
+                    System.out.println("Which Col would you like?");
+                    p1c = sc.nextInt();
+                } while (!legalMove(p1r, p1c));
+
+                //after getting valid input, place move on board, and increment move value
+                placeSymbolOnBoard(p1r,p1c, 1);
+                moveIncrement();
+
+                //check if win or draw
+                //If there are less than 5 moves, skip win checks
+                checkForWinner(1);
+
+                //if game is already over, skip player 2
+                if (!isOver) {
+                    //do until user chooses valid input
+                    do {
+                        printBoard();
+                        System.out.println("Player 2's turn: 'O'");
+                        System.out.println("Which Row would you like?");
+                        p2r = sc.nextInt();
+                        System.out.println("Which Col would you like?");
+                        p2c = sc.nextInt();
+                    } while (!legalMove(p2r, p2c));
+
+                    //after getting valid input, place move on board, increment move value
+                    placeSymbolOnBoard(p2r,p2c, 2);
+                    moveIncrement();
+
+                    //check if win, or draw
+                    //If there are less than 5 moves, skip win / draw checks
+                    checkForWinner(2);
+                }
+            } while (!isOver);
+            //If player chooses not to play, program is terminated
+        } else if (playOrNot == 'N') {
+            System.out.println("Goodbye!");
+            System.exit(0);
+        }
+
+    }
 }
