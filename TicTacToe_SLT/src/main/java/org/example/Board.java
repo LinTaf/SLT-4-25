@@ -55,5 +55,12 @@ public class Board {
         }
     }
 
+    public void printBoard() {
+        for (int row = 0; row < ROW; row++) {
+            System.out.println(board[row][0] + "|" + board[row][1] + "|" + board[row][2]);
+            if (row < 2 )
+                System.out.println("-----");
+        }
+    }
 
 }
